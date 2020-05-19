@@ -1,10 +1,7 @@
-.container{
-  padding-top: 20rpx;
-  padding-bottom: 60rpx;
-  background:#edf3f7;
-}
-.gap{
-  padding-right: 5rpx;
+@import "../../static/wxss/common.wxss";
+
+.gap_r{
+  margin-right: 5rpx;
 }
 /**index.wxss**/
 .userinfo {
@@ -34,7 +31,7 @@
   background-color: #ffffff;
   border-radius: 10rpx;
   box-shadow: 0 0 10px #d3e1f4;
-
+  margin-left: 20rpx;
 }
 .table-title-wrap{
   position: relative;
@@ -67,7 +64,6 @@
 
 .table-title-ing{
   color: #52d41b;
-  /* background-color: #f4ffdc; */
 }
 
 .matchName{
@@ -242,7 +238,8 @@
   justify-content: space-between;
   padding-right: 30rpx;
 }
-.bid-plan-btn{
+.optimize-btn{
+  width: 200rpx;
   padding:0 20rpx;
   height: 72rpx;
   line-height: 72rpx;
@@ -254,7 +251,7 @@
   box-shadow: 0rpx 0rpx 6rpx #dbe6f5;
   font-weight: bold;
 }
-.bid-plan-btn:active{
+.optimize-btn:active{
   opacity: .7;
 }
 .dialog-match-teams{

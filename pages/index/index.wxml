@@ -1,103 +1,63 @@
 <!--index.wxml-->
-<view class="container">
+<view class="containers">
+	<view class="addMatch">
+		<view class="addMatchBtn" bindtap="addMatch">添加一条模拟赛事</view>
+	</view>
 
-	<view
-    class="table"
-    wx:for="{{matchList}}"
-    wx:for-index="idx"
-    wx:key="idx"
-    wx:for-item="match"
-    data-match='{{match}}'
-    bindtap="bidMatchEvent"
-	>
+	<view class="table" wx:for="{{matchList}}" wx:for-index="idx" wx:key="idx" wx:for-item="match"
+		data-match='{{match}}' bindtap="bidMatchEvent">
 		<!-- status==0 0过去时 -->
 		<!-- status==0 1一般时  -->
 		<!-- status==0 2进行时 -->
 		<view class="table-title-wrap">
-			<view class="table-title {{match.status==0? 'table-title-disabled' :''}} {{match.status==2? 'table-title-ing' :''}}">
+			<view
+				class="table-title {{match.status==0? 'table-title-disabled' :''}} {{match.status==2? 'table-title-ing' :''}}">
 				<view class="matchName {{match.status==0? 'matchName-disabled' :''}}">{{match.name}}</view>
-				<view class="gap">{{match.teams[0]}} vs {{match.teams[1]}}</view>
-				<view class="gap" wx:if="{{match.status==1}}">{{match.start_time}}~{{match.end_time}}</view>
-				<view class="gap" wx:elif="{{match.status==2}}">正在比赛➠</view>
-				<view class="gap" wx:else>【赛事已结束】</view>
+				<view class="gap_r">{{match.teams[0]}} vs {{match.teams[1]}}</view>
+				<view class="gap_r" wx:if="{{match.status==1}}">{{match.start_time}}~{{match.end_time}}</view>
+				<view class="gap_r" wx:elif="{{match.status==2}}">正在比赛➠</view>
+				<view class="gap_r" wx:else>【赛事已结束】</view>
 			</view>
 		</view>
 		<view class="th">
-			<view
-			 class="thd {{match.status==0? 'table-thd-disabled' :''}} {{idx===match.total_balls? 'thd-hit' : ''}}"
-			 wx:for="{{tableData.th}}"
-			 wx:for-index="idx"
-			 wx:key="idx"
-			 wx:for-item="item"
-			> {{item}}
+			<view class="thd {{match.status==0? 'table-thd-disabled' :''}} {{idx===match.total_balls? 'thd-hit' : ''}}"
+				wx:for="{{balls}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"> {{item}}
 			</view>
 		</view>
 		<view class="tb">
-			<view
-			 class="td {{match.status==0? 'table-td-disabled' :''}} {{idx==match.total_balls? 'td-hit' : ''}}"
-			 wx:for="{{match.odds}}"
-			 wx:for-index="idx"
-			 wx:key="idx"
-			 wx:for-item="item"
-			>{{item}}
+			<view class="td {{match.status==0? 'table-td-disabled' :''}} {{idx==match.total_balls? 'td-hit' : ''}}"
+				wx:for="{{match.odds}}" wx:for-index="idx" wx:key="idx" wx:for-item="item">{{item}}
 			</view>
 		</view>
 		<view class="bid" wx:if="{{match.status==1 || match.status==2}}">投注</view>
 	</view>
 
-	<view class="addMatch">
-		<view class="addMatchBtn" bindtap="addMatch">添加一条模拟赛事</view>
-	</view>
-
 	<view class="bid-dialog" wx:if="{{bidMatch}}">
-		<view class="dialog-mask" bindtap="cancelBidDialog"/>
+		<view class="dialog-mask" bindtap="cancelBidDialog" />
 		<view class="dialog-context">
 			<view class="dialog-header">
 				<view class="dialog-title">选择我的投注方案</view>
-        <view class="dialog-match-teams">{{bidMatch.teams[0]}} vs {{bidMatch.teams[1]}}  {{bidMatch.start_time}}~{{bidMatch.end_time}}</view>
+				<view class="dialog-match-teams">{{bidMatch.teams[0]}} vs {{bidMatch.teams[1]}}
+					{{bidMatch.start_time}}~{{bidMatch.end_time}}</view>
 			</view>
 			<view class="dialog-sub-title">A方案:1球+3球</view>
-      <view class="bid-plan">
-        <view class="th">
-          <view
-          class="thd {{idx===1? 'thd-hit' : ''}} {{idx===3? 'thd-hit' : ''}}"
-          wx:for="{{tableData.th}}"
-          wx:for-index="idx"
-          wx:key="idx"
-          wx:for-item="item"
-          > {{item}}
-          </view>
-        </view>
-        <view class="bid-plan-btn" bindtap="cancelBidDialog">100元</view>
-      </view>
-			<view class="dialog-sub-title">B方案:2球+4球</view>
-      <view class="bid-plan">
-        <view class="th">
-          <view
-          class="thd {{idx===2? 'thd-hit' : ''}} {{idx===4? 'thd-hit' : ''}}"
-          wx:for="{{tableData.th}}"
-          wx:for-index="idx"
-          wx:key="idx"
-          wx:for-item="item"
-          > {{item}}
-          </view>
-        </view>
-        <view class="bid-plan-btn" bindtap="cancelBidDialog">100元</view>
-      </view>
+			<view class="bid-plan">
+				<view class="th">
+					<view class="thd {{idx===1? 'thd-hit' : ''}} {{idx===3? 'thd-hit' : ''}}" wx:for="{{tableData.th}}"
+						wx:for-index="idx" wx:key="idx" wx:for-item="item"> {{item}}
+					</view>
+				</view>
+				<view class="optimize-btn" bindtap="cancelBidDialog">优化</view>
+			</view>
 		</view>
 	</view>
 
 	<view class="userinfo">
-		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击获取头像昵称 </button>
+		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击获取头像昵称
+		</button>
 		<block wx:else>
-			<image
-			 bindtap="bindViewTap"
-			 class="userinfo-avatar"
-			 src="{{userInfo.avatarUrl}}"
-			 mode="cover"
-			/>
+			<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover" />
 			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
 		</block>
 	</view>
 </view>
-

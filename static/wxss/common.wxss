@@ -1,0 +1,30 @@
+/* 容器共享 */
+.containers{
+    padding-top: 20rpx;
+    padding-bottom: 60rpx;
+    background:#edf3f7;
+}
+/* 行 */
+.c-row-cl{
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.c-row-cc{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.c-row-cr{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.c-row1-cx{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+  /* background: linear-gradient(to bottom, #fff4dc , #fff4dc); */
