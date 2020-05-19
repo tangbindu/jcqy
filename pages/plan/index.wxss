@@ -1,0 +1,36 @@
+
+.container{
+  padding-top: 20rpx;
+  padding-bottom: 60rpx;
+}
+/* table  */
+.table{
+  width: 710rpx;
+}
+.th{
+  display:flex;
+}
+.tb{
+  display:flex;
+  margin-top:-1rpx;
+}
+.thd{
+  font-size: 32rpx;
+  background-color: #f2f2f2;
+}
+.td{
+  color: #666;
+  font-size: 28rpx;
+}
+.thd,.td{
+  flex:1;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+  margin-left:-1rpx;
+  padding:6rpx 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* table  */

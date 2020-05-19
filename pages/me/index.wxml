@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="table">
+        <view class="table-title-wrap">
+            <view class="table-title table-title-ing">
+                <view class="gap">1本轮</view>
+                <view class="gap">进行时</view>
+            </view>
+            <view class="table-title-corner table-title-corner-ing"></view>
+        </view>
+        <view class="th">
+            <view class="thd" wx:for="{{tableData.th}}"> {{item}}</view>
+        </view>
+        <view class="tb" wx:for="{{tableData.tb}}" wx:for-item="td">
+            <view class="td" wx:for="{{td}}" wx:for-item="item">{{item}}</view>
+        </view>
+    </view>
+
+    <view class="table">
+        <view class="table-title-wrap">
+            <view class="table-title table-title-disabled">
+                <view class="gap">2本轮</view>
+                <view class="gap">赚了[有吃肉]</view>
+            </view>
+            <view class="table-title-corner table-title-corner-disabled"></view>
+        </view>
+        <view class="th">
+            <view class="thd table-thd-disabled" wx:for="{{tableData.th}}"> {{item}}</view>
+        </view>
+        <view class="tb" wx:for="{{tableData.tb}}" wx:for-item="td">
+            <view class="td table-td-disabled" wx:for="{{td}}" wx:for-item="item">{{item}}</view>
+        </view>
+    </view>
+</view>
