@@ -2,20 +2,67 @@
 //获取应用实例
 const app = getApp();
 const matchRequest = require("../../request/matchData.js");
-const {handleMatchTime} = require("../../utils/util.js");
+const { handleMatchTime } = require("../../utils/util.js");
 
 Page({
   data: {
+    //用户登录信息
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    //投中的赛事
-    bidMatch:null,
-    //赛事列表
+    /**
+     * 我的投注数据
+     */
+    myBitData: {
+      //头像
+      avatar: null,
+      //微信号
+      wechatId: null,
+      //手机号
+      iphoneNumber: null,
+      //最小投注
+      minimumBid: 100, // 2元一注
+      //投注历史
+      bitHistory: [
+        //投注的赛事
+        {
+          //赛事id
+          matchId: null,
+          //顾客计划投注
+          customerPlan: {
+            //ballNums
+            ballNums: [1, 2, 3, 4],
+            //投注金额
+            bidAmount: [4, 5, 6, 7]
+          },
+          // 优化顾客计划投注
+          optimazeCustomerPlan: {
+            //ballNums
+            ballNums: [1, 2, 3, 4],
+            //投注金额
+            bidAmount: [4, 5, 6, 7],
+            //分组
+            subGroup: {
+              a:[1,3],
+              b:[2,4],
+            }
+          }
+        }
+      ]
+      //
+    },
+    /**
+     * 赛事数据
+     * */
     matchList: [
       //  0过去时 1一般时 2进行时
     ],
-    balls:[ "0", "1", "2", "3", "4", "5", "6", "7+"]
+    /**
+     * ui相关
+     * */
+    balls: ["0", "1", "2", "3", "4", "5", "6", "7+"],
+    //投中的赛事
+    bidMatch: null
   },
   //事件处理函数
   bindViewTap: function () {
@@ -63,33 +110,33 @@ Page({
     })
   },
   //加载资源
-  loadResource(){
+  loadResource() {
     //赛事信息
     this.readMatch();
   },
   //投赛事
-  bidMatchEvent(event){
-    this.setData({bidMatch:event.currentTarget.dataset.match})
+  bidMatchEvent(event) {
+    this.setData({ bidMatch: event.currentTarget.dataset.match })
   },
   //cancelBidDialog
-  cancelBidDialog(){
-    this.setData({bidMatch:null})
+  cancelBidDialog() {
+    this.setData({ bidMatch: null })
   },
   //读取赛事
-  readMatch(){
-    matchRequest.read().then((result)=>{
+  readMatch() {
+    matchRequest.read().then((result) => {
       //解决时间问题
-      let ml=handleMatchTime(new Date(),result.data)
-      this.setData({matchList:ml})
+      let ml = handleMatchTime(new Date(), result.data)
+      this.setData({ matchList: ml })
     });
   },
   //addMatch 模拟
   addMatch() {
     // 名字
     let teamNames = ["皇家马德里", "拜仁慕尼黑", "尤文图斯", "巴塞罗那", "切尔西", "曼城", "马德里竞技", "巴黎圣日耳曼", "罗马和多特蒙德", "意甲拉齐奥", "巴甲科林蒂安", "阿甲博卡青年", "比甲布鲁日", "法甲波尔多", "英超西汉姆联"];
-    let a=Math.floor(Math.random() * 14);
-    let b=Math.floor(Math.random() * 14);
-    b= a==b? ++b : b;
+    let a = Math.floor(Math.random() * 14);
+    let b = Math.floor(Math.random() * 14);
+    b = a == b ? ++b : b;
     let twoTeams = [
       teamNames[a],
       teamNames[b]
