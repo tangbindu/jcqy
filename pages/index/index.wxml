@@ -3,6 +3,9 @@
 	<view class="addMatch">
 		<view class="addMatchBtn" bindtap="addMatch">添加一条模拟赛事</view>
 	</view>
+	<view class="addMatch">
+		<view class="addMatchBtn" bindtap="deleteMatch">删除一条模拟赛事</view>
+	</view>
 
 	<view class="table" wx:for="{{matchList}}" wx:for-index="idx" wx:key="idx" wx:for-item="match"
 		data-match='{{match}}' bindtap="bidMatchEvent">
@@ -21,7 +24,7 @@
 		</view>
 		<view class="th">
 			<view class="thd {{match.status==0? 'table-thd-disabled' :''}} {{idx===match.total_balls? 'thd-hit' : ''}}"
-				wx:for="{{balls}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"> {{item}}
+				wx:for="{{match.ballNum}}" wx:for-index="idx" wx:key="idx" wx:for-item="item"> {{item}}
 			</view>
 		</view>
 		<view class="tb">

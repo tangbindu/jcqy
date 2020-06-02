@@ -10,7 +10,6 @@ if(typeof getApp==="undefined"){
   MyApp=getApp;
 }
 //兼容处理
-
 let db = MyApp().db;
 const matchRequest = {
   //读取100条
@@ -44,6 +43,12 @@ const matchRequest = {
         }
       })
     })
+  },
+  //删除
+  delete(id){
+    return db.collection('matchData').where({
+      _id: id
+    }).remove()
   }
 }
 module.exports = matchRequest;

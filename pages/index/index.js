@@ -50,19 +50,12 @@ Page({
           }
         }
       ]
-      //
     },
     /**
      * 赛事数据
      * */
-    matchList: [
-      //  0过去时 1一般时 2进行时
-    ],
-    /**
-     * ui相关
-     * */
-    balls: ["0", "1", "2", "3", "4", "5", "6", "7+"],
-    //投中的赛事
+    matchList: [],
+    //投投注赛事
     bidMatch: null
   },
   //事件处理函数
@@ -134,6 +127,12 @@ Page({
   //addMatch 模拟
   addMatch() {
     Match.mock().add().then(()=>{
+      this.loadResource();
+    });
+  },
+  //deleteMatch 删除match
+  deleteMatch(){
+    new Match(this.data.matchList[0]).delete().then(()=>{
       this.loadResource();
     });
   }
