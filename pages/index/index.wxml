@@ -14,7 +14,7 @@
 				class="table-title {{match.status==0? 'table-title-disabled' :''}} {{match.status==2? 'table-title-ing' :''}}">
 				<view class="matchName {{match.status==0? 'matchName-disabled' :''}}">{{match.name}}</view>
 				<view class="gap_r">{{match.teams[0]}} vs {{match.teams[1]}}</view>
-				<view class="gap_r" wx:if="{{match.status==1}}">{{match.start_time}}~{{match.end_time}}</view>
+				<view class="gap_r" wx:if="{{match.status==1}}">{{match.startTime}}~{{match.endTime}}</view>
 				<view class="gap_r" wx:elif="{{match.status==2}}">正在比赛➠</view>
 				<view class="gap_r" wx:else>【赛事已结束】</view>
 			</view>
@@ -38,7 +38,7 @@
 			<view class="dialog-header">
 				<view class="dialog-title">选择我的投注方案</view>
 				<view class="dialog-match-teams">{{bidMatch.teams[0]}} vs {{bidMatch.teams[1]}}
-					{{bidMatch.start_time}}~{{bidMatch.end_time}}</view>
+					{{bidMatch.startTime}}~{{bidMatch.endTime}}</view>
 			</view>
 			<view class="dialog-sub-title">A方案:1球+3球</view>
 			<view class="bid-plan">

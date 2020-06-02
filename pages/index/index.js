@@ -1,7 +1,8 @@
 //index.js·
 //获取应用实例
 const app = getApp();
-const matchRequest = require("../../request/matchData.js");
+const matchRequest = require("../../request/matchRequest.js");
+var Match = require('../../modules/match.js');
 const { handleMatchTime } = require("../../utils/util.js");
 
 Page({
@@ -124,7 +125,7 @@ Page({
   },
   //读取赛事
   readMatch() {
-    matchRequest.read().then((result) => {
+    Match.read().then((result) => {
       //解决时间问题
       let ml = handleMatchTime(new Date(), result.data)
       this.setData({ matchList: ml })
@@ -132,47 +133,9 @@ Page({
   },
   //addMatch 模拟
   addMatch() {
-    // 名字
-    let teamNames = ["皇家马德里", "拜仁慕尼黑", "尤文图斯", "巴塞罗那", "切尔西", "曼城", "马德里竞技", "巴黎圣日耳曼", "罗马和多特蒙德", "意甲拉齐奥", "巴甲科林蒂安", "阿甲博卡青年", "比甲布鲁日", "法甲波尔多", "英超西汉姆联"];
-    let a = Math.floor(Math.random() * 14);
-    let b = Math.floor(Math.random() * 14);
-    b = a == b ? ++b : b;
-    let twoTeams = [
-      teamNames[a],
-      teamNames[b]
-    ]
-    // 概率
-    let odds = [
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1),
-      (Math.random() * 8).toFixed(1)
-    ]
-    //时间
-    let start_time = null;
-    let end_time = null;
-    start_time = new Date();
-    start_time.setDate(start_time.getDate() + Math.floor(Math.random() * 10))
-    end_time = new Date(start_time.getTime() + 120 * 60 * 1000)
-    //请求吧
-    matchRequest.add({
-      start_time: start_time,
-      end_time: end_time,
-      teams: twoTeams,
-      odds: odds,
-    }).then(() => {
-      wx.showToast({
-        title: '添加模拟赛事成功',
-        icon: 'succes',
-        duration: 1000,
-        mask: false
-      })
+    Match.mock().add().then(()=>{
       this.loadResource();
-    })
+    });
   }
 })
 

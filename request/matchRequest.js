@@ -1,5 +1,17 @@
 // 赛事相关的请求
-let db = getApp().db;
+let MyApp;
+if(typeof getApp==="undefined"){
+  MyApp=function(){
+    return {db:{
+      collection:function(){}
+    }}
+  }
+}else{
+  MyApp=getApp;
+}
+//兼容处理
+
+let db = MyApp().db;
 const matchRequest = {
   //读取100条
   read(){
@@ -15,14 +27,7 @@ const matchRequest = {
     //增长号等于name
     return new Promise((resolve, reject) => {
       db.collection('matchData').add({
-        data: {
-          name:param.name || "赛事编号",
-          start_time: param.start_time || new Date(),
-          end_time:param.end_time || new Date(),
-          teams:param.teams || ["无名","无名"],
-          odds:param.odds || ['0.0','0.0','0.0','0.0','0.0','0.0','0.0','0.0'],
-          total_balls:param.totalBalls || '',
-        },
+        data: param,
         success: function (res) {
           resolve(res)
         }
@@ -33,14 +38,7 @@ const matchRequest = {
   update(param={}){
     return new Promise((resolve, reject) => {
       db.collection('matchData').add({
-        data: {
-          name:param.name || "赛事编号",
-          start_time: param.start_time || new Date(),
-          end_time:param.end_time || new Date(),
-          teams:param.teams || ["无名","无名"],
-          odds:param.odds || ['0.0','0.0','0.0','0.0','0.0','0.0','0.0','0.0'],
-          total_balls:param.totalBalls || '',
-        },
+        data: param,
         success: function (res) {
           resolve(res)
         }

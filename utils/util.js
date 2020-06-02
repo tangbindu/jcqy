@@ -38,10 +38,10 @@ const handleMatchTime=(currentTime,matchList)=>{
   currentTime=new Date(currentTime).getTime();
   matchList.forEach((match)=>{
     //  0过去时 1一般时 2进行时
-    if(currentTime<new Date(match.start_time).getTime()){
+    if(currentTime<new Date(match.startTime).getTime()){
       //没开始
       match.status=1;
-    }else if(currentTime>new Date(match.end_time).getTime()){
+    }else if(currentTime>new Date(match.endTime).getTime()){
       //结束了
       match.status=0;
       //测试数据，一定要删下面一行
@@ -50,11 +50,11 @@ const handleMatchTime=(currentTime,matchList)=>{
       //进行时
       match.status=2;
     }
-    match.start_time=formatTime1(new Date(match.start_time))
-    match.end_time=formatTime2(new Date(match.end_time))
+    match.startTime=formatTime1(new Date(match.startTime))
+    match.endTime=formatTime2(new Date(match.endTime))
   })
   matchList.sort((a,b)=>{
-    return new Date(b.start_time).getTime()-new Date(a.start_time).getTime();
+    return new Date(b.startTime).getTime()-new Date(a.startTime).getTime();
   })
   return matchList
 }
