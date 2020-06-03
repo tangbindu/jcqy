@@ -6,6 +6,9 @@
 	<view class="addMatch">
 		<view class="addMatchBtn" bindtap="deleteMatch">删除一条模拟赛事</view>
 	</view>
+	<view class="addMatch">
+		<view class="addMatchBtn" bindtap="bidMatch">bid一次赛事</view>
+	</view>
 
 	<view class="table" wx:for="{{matchList}}" wx:for-index="idx" wx:key="idx" wx:for-item="match"
 		data-match='{{match}}' bindtap="bidMatchEvent">

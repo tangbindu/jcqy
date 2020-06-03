@@ -1,8 +1,8 @@
 //index.js·
 //获取应用实例
 const app = getApp();
-const matchRequest = require("../../request/matchRequest.js");
-var Match = require('../../modules/match.js');
+const Match = require('../../modules/match.js');
+const Bid = require('../../modules/bid.js');
 const { handleMatchTime } = require("../../utils/util.js");
 
 Page({
@@ -135,6 +135,10 @@ Page({
     new Match(this.data.matchList[0]).delete().then(()=>{
       this.loadResource();
     });
+  },
+  //--------------------------bid赛事
+  bidMatch(){
+    
   }
 })
 
