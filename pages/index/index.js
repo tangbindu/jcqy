@@ -44,8 +44,8 @@ Page({
             bidAmount: [4, 5, 6, 7],
             //分组
             subGroup: {
-              a:[1,3],
-              b:[2,4],
+              a: [1, 3],
+              b: [2, 4],
             }
           }
         }
@@ -126,19 +126,19 @@ Page({
   },
   //addMatch 模拟
   addMatch() {
-    Match.mock().add().then(()=>{
+    Match.mock().add().then(() => {
       this.loadResource();
     });
   },
   //deleteMatch 删除match
-  deleteMatch(){
-    new Match(this.data.matchList[0]).delete().then(()=>{
+  deleteMatch() {
+    new Match(this.data.matchList[0]).delete().then(() => {
       this.loadResource();
     });
   },
   //--------------------------bid赛事
-  bidMatch(){
-    
+  bidMatch() {
+
   }
 })
 

@@ -36,6 +36,13 @@ App({
     //开始使用云开发
     wx.cloud.init()
     this.db = wx.cloud.database(); 
+    //获取openId
+    wx.cloud.callFunction({
+      name: 'getOpenid', complete: res => { 
+        let openid=res.result.openid;
+        this.globalData.openid=openid;
+      }
+    })
   },
   globalData: {
     userInfo: null

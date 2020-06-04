@@ -72,13 +72,13 @@ Bid.prototype = {
 
 
 //mock数据
-Bid.mock=function(){
+Bid.mock=function(match){
     return new Bid({
-        userId:"config.userId",
-        matchId:"config.matchId",
+        userId:undefined,
+        matchId:match._id,
         bidTime:new Date().getTime(),
-        customerBallNums:[],
-        customerBidAmount:[],
+        customerBallNums:["1","2","3","4"],
+        customerBidAmount:[""],
         optimazeBallNums:[],
         optimazeBidAmount:[],
         optimazeBallNumsGoup:[[],[]],

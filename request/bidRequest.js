@@ -22,6 +22,7 @@ const bidRequest = {
   },
   //添加赛事
   add(param={}){
+    param.userId=MyApp.globalData.openid;
     //查一个增长编号
     //增长号等于name
     return new Promise((resolve, reject) => {
