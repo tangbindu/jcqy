@@ -34,27 +34,20 @@ const formatNumber = n => {
 }
 
 //处理比赛时间
-const handleMatchTime=(currentTime,matchList)=>{
-  currentTime=new Date(currentTime).getTime();
-  matchList.forEach((match)=>{
-    //  0过去时 1一般时 2进行时
-    if(currentTime<new Date(match.startTime).getTime()){
-      //没开始
-      match.status=1;
-    }else if(currentTime>new Date(match.endTime).getTime()){
-      //结束了
-      match.status=0;
-      //测试数据，一定要删下面一行
-      match.total_balls=Math.floor(Math.random()*8)
+const preHandleMatch=(matchList)=>{
+  matchList.forEach((element,index) => {
+    matchList[index].ballNum=["0","1","2","3","4","5","6","7+"]
+    if(element.score.length>0){
+      // status==0 0赛事过去时 
+      // status==1 1赛事一般时
+      matchList[index].status=0
     }else{
-      //进行时
-      match.status=2;
+      matchList[index].status=1;
     }
-    match.startTime=formatTime1(new Date(match.startTime))
-    match.endTime=formatTime2(new Date(match.endTime))
-  })
-  matchList.sort((a,b)=>{
-    return new Date(b.startTime).getTime()-new Date(a.startTime).getTime();
+  });
+  //排序
+  matchList.sort(function(a,b){
+    return parseInt(b.matchid)-parseInt(a.matchid)
   })
   return matchList
 }
@@ -63,5 +56,5 @@ const handleMatchTime=(currentTime,matchList)=>{
 
 module.exports = {
   formatTime,
-  handleMatchTime
+  preHandleMatch
 }

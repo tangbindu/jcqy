@@ -3,7 +3,7 @@
 const app = getApp();
 const Match = require('../../modules/match.js');
 const Bid = require('../../modules/bid.js');
-const { handleMatchTime } = require("../../utils/util.js");
+const { preHandleMatch } = require("../../utils/util.js");
 
 Page({
   data: {
@@ -120,7 +120,7 @@ Page({
   readMatch() {
     Match.read().then((result) => {
       //解决时间问题
-      let ml = handleMatchTime(new Date(), result.data)
+      let ml = preHandleMatch(result.data)
       this.setData({ matchList: ml })
     });
   },

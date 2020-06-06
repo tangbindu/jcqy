@@ -18,11 +18,11 @@
 		<view class="table-title-wrap">
 			<view
 				class="table-title {{match.status==0? 'table-title-disabled' :''}} {{match.status==2? 'table-title-ing' :''}}">
-				<view class="matchName {{match.status==0? 'matchName-disabled' :''}}">{{match.name}}</view>
-				<view class="gap_r">{{match.teams[0]}} vs {{match.teams[1]}}</view>
-				<view class="gap_r" wx:if="{{match.status==1}}">{{match.startTime}}~{{match.endTime}}</view>
+				<view class="matchName {{match.status==0? 'matchName-disabled' :''}}">{{match.date+" "+match.id}}</view>
+				<view class="gap_r">{{match.teams[0]}} VS {{match.teams[1]}}</view>
+				<view class="gap_r" wx:if="{{match.status==1}}">{{match.startTime}}</view>
 				<view class="gap_r" wx:elif="{{match.status==2}}">正在比赛➠</view>
-				<view class="gap_r" wx:else>【赛事已结束】</view>
+				<view class="gap_r" wx:else>【已结束】</view>
 			</view>
 		</view>
 		<view class="th">
