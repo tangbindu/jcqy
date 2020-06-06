@@ -36,7 +36,11 @@ const formatNumber = n => {
 //处理比赛时间
 const preHandleMatch=(matchList)=>{
   matchList.forEach((element,index) => {
-    matchList[index].ballNum=["0","1","2","3","4","5","6","7+"]
+    matchList[index].ballNum=["0","1","2","3","4","5","6","7+"];
+    if(matchList[index].score.length>0){
+      let nums=matchList[index].score.split(":");
+      matchList[index].total_balls=parseInt(nums[0])+parseInt(nums[1]);
+    }
     if(element.score.length>0){
       // status==0 0赛事过去时 
       // status==1 1赛事一般时

@@ -44,7 +44,7 @@
   height: 68rpx;
   display: flex;
   border-bottom: 1px dashed #eaeff5;
-  margin-bottom: 15rpx;
+  margin-bottom: 5rpx;
 
 }
 .table-title{
@@ -53,7 +53,7 @@
   z-index: 2;
   height: 68rpx;
   line-height: 68rpx;
-  font-size: 32rpx;
+  font-size: 28rpx;
   color: #27263d;
   /* background-color: #fff4dc; */
   /* background: linear-gradient(to bottom, #fff4dc , #fff4dc); */
@@ -98,47 +98,47 @@
 .th{
   display:flex;
   padding-top: 1rpx;
-  padding-left:5rpx;
 }
 .tb{
-  padding-left: 5px;
   display:flex;
   padding-top: 1rpx;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
 }
 .thd{
   font-size: 26rpx;
   color: #ffffff;
   background-color:#99a7ba;
   border-radius:50rpx;
-  height:70rpx;
-  width:70rpx;
+  height:60rpx;
+  width:60rpx;
 }
 .thd-hit{
-  color: #27263d !important;
+  font-size: 38rpx;
+  color: #ffffff !important;
   background-color:transparent;
-  background-image: url("https://tangbindu.github.io/static/ball.png");
+  /* background-image: url("https://tangbindu.github.io/static/ball.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   font-weight: bold;
+  background-color: tomato !important;
 }
 .td-hit{
-  color: #27263d !important;
+  color: tomato !important;
   font-weight: bold;
 }
 .td{
   color: #27263d;
-  font-size: 26rpx;
+  font-size: 22rpx;
   height:30rpx;
-  width:70rpx;
+  width:60rpx;
 }
 .thd,.td{
   display:flex;
   align-items: center;
   justify-content: center;
   /* border: .5rpx solid #e9e9e1; */
-  margin-left:5rpx;
+  margin-left:10rpx;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -155,8 +155,8 @@
   right: 10rpx;
   bottom: 10rpx;
   width: 108rpx;
-  height: 108rpx;
-  line-height: 108rpx;
+  height: 84rpx;
+  line-height: 84rpx;
   font-size: 32rpx;
   color: #ffffff;
   border-radius: 10rpx;

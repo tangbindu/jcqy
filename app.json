@@ -30,12 +30,6 @@
       "selectedIconPath":"static/images/tab_recommend_active.png"
     },
     {
-      "text":"计划",
-      "pagePath":"pages/plan/index",
-      "iconPath":"static/images/tab_plan.png",
-      "selectedIconPath":"static/images/tab_plan_active.png"
-    },
-    {
       "text":"我的",
       "pagePath":"pages/me/index",
       "iconPath":"static/images/tab_me.png",
