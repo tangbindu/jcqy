@@ -1,33 +1,53 @@
 const bidRequest = require("../request/bidRequest.js");
 //投注模块
-function Bid(){
+function Bid(config){
     this.config=config || {};
-    this.userId=config.userId;
-    this.matchId=config.matchId;
-    this.bidTime=config.bidTime;
-    this.customerBallNums=config.customerBallNums || [];
-    this.customerBidAmount=config.customerBidAmount || [];
-    this.optimazeBallNums=config.optimazeBallNums || [];
-    this.optimazeBidAmount=config.optimazeBidAmount || [];
-    this.optimazeBallNumsGoup=config.optimazeBallNumsGoup || [[],[]];
+    this.userid=this.config.userid || "";
+    this.matchid=this.config.matchid || "";
+    this.matchInfo=this.config.matchInfo || "";
+    this.bidTime=this.config.bidTime || new Date().getTime();
+    //用户选择的球
+    this.customerBallNums=this.config.customerBallNums || [];
+    //用户选择的金额
+    this.customerBidAmount=this.config.customerBidAmount || [];
+    //优化的金额
+    this.optimazeBidAmount=this.config.optimazeBidAmount || [];
+    //优化的组合
+    this.optimazeBallNumsGoup=this.config.optimazeBallNumsGoup || [[],[]];
+    //总金额
+    this.totalAmount=this.config.totalAmount || 0;
+    //总进球
+    this.totalBallNum=this.config.totalAmount || 0;
 }
 Bid.prototype = {
     //添加赛事
     add(config) {
+      wx.showLoading({
+        title: '正在投注'
+      })
       return bidRequest.add({
-        matchId: this.name,
+        userid: this.userid,
+        matchInfo:this.matchInfo,
+        matchid: this.matchid,
+        // odds: this.odds,
         customerBallNums: this.customerBallNums,
         customerBidAmount: this.customerBidAmount,
-        optimazeBallNums: this.optimazeBallNums,
         optimazeBidAmount: this.optimazeBidAmount,
         optimazeBallNumsGoup: this.optimazeBallNumsGoup,
+        totalAmount: this.totalAmount
       }).then(() => {
+        wx.hideToast()
         wx.showToast({
           title: '投注成功',
           icon: 'succes',
           duration: 1000,
-          mask: false
+          mask: true
         })
+        setTimeout(()=>{
+          wx.switchTab({
+              url:"/pages/me/index"
+          })
+        },1000)
       })
     },
     //删除赛事
@@ -53,7 +73,7 @@ Bid.prototype = {
     //更新赛事
     update() {
         bidRequest.add({
-            matchId: this.name,
+            matchid: this.name,
             customerBallNums: this.customerBallNums,
             customerBidAmount: this.customerBidAmount,
             optimazeBallNums: this.optimazeBallNums,
@@ -70,19 +90,7 @@ Bid.prototype = {
     }
 }
 
-
-//mock数据
-Bid.mock=function(match){
-    return new Bid({
-        userId:undefined,
-        matchId:match._id,
-        bidTime:new Date().getTime(),
-        customerBallNums:["1","2","3","4"],
-        customerBidAmount:[""],
-        optimazeBallNums:[],
-        optimazeBidAmount:[],
-        optimazeBallNumsGoup:[[],[]],
-    })
+Bid.read=function(userid){
+  return bidRequest.read(userid);
 }
-
 module.exports=Bid;

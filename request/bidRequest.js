@@ -13,16 +13,15 @@ if(typeof getApp==="undefined"){
 let db = MyApp().db;
 const bidRequest = {
   //读取100条
-  read(){
+  read(userid){
     return new Promise((resolve, reject) => {
-      db.collection('bidData').limit(100).get().then((result)=>{
+      db.collection('bidData').where({"userid":userid}).limit(100).get().then((result)=>{
         resolve(result)
       })
     })
   },
   //添加赛事
   add(param={}){
-    param.userId=MyApp.globalData.openid;
     //查一个增长编号
     //增长号等于name
     return new Promise((resolve, reject) => {

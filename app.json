@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/me/index",
     "pages/recommend/index",
     "pages/plan/index",
-    "pages/me/index",
     "pages/logs/logs"
   ],
   "window":{

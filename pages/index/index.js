@@ -2,7 +2,6 @@
 //获取应用实例
 const app = getApp();
 const Match = require('../../modules/match.js');
-const Bid = require('../../modules/bid.js');
 const { preHandleMatch } = require("../../utils/util.js");
 
 Page({
@@ -23,6 +22,8 @@ Page({
       iphoneNumber: null,
       //最小投注
       minimumBid: 100, // 2元一注
+      //投注窗口
+      bidDialog : null,
       //投注历史
       bitHistory: [
         //投注的赛事
@@ -55,6 +56,24 @@ Page({
      * 赛事数据
      * */
     matchList: [],
+    /**
+     * 投注金额
+     * */
+    amountList: [
+      20,
+      40,
+      60,
+      80,
+      100,
+      200,
+      400,
+      600,
+      800,
+      1000,
+      2000,
+      4000,
+      10000,
+    ],
     //投投注赛事
     bidMatch: null
   },
@@ -95,6 +114,9 @@ Page({
     //加载资源
     this.loadResource();
   },
+  onReady: function(){
+    this.bidDialog = this.selectComponent("#bidDialog");
+  },
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -110,11 +132,8 @@ Page({
   },
   //投赛事
   bidMatchEvent(event) {
-    this.setData({ bidMatch: event.currentTarget.dataset.match })
-  },
-  //cancelBidDialog
-  cancelBidDialog() {
-    this.setData({ bidMatch: null })
+    this.bidDialog.setData({openid:app.globalData.openid})
+    this.bidDialog.openDialog();
   },
   //读取赛事
   readMatch() {

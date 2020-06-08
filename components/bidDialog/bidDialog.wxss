@@ -1,0 +1,233 @@
+
+.bid-dialog{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+.dialog-mask{
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+}
+.dialog-context{
+  position: relative;
+  z-index: 10;
+  width:730rpx;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  box-shadow: 0 0 50px rgba(0, 0, 0, .4);
+}
+.dialog-header{
+  border-bottom: 1px dashed #eaeff5;
+  padding-bottom: 20rpx;
+}
+.dialog-title{
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  padding:10rpx 30rpx;
+  /* font-weight: bold; */
+  text-align: center;
+}
+.dialog-sub-title{
+  font-size: 28rpx;
+  padding:10rpx 10rpx;
+  display: flex;
+  flex-direction: row;
+  color: darkgray;
+}
+.optimize-btn-wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx
+}
+.optimize-btn{
+  padding:0 20rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  border-radius: 68rpx;
+  font-size: 32rpx;
+  color: goldenrod;
+  text-align: center;
+  /* box-shadow: 0rpx 0rpx 6rpx goldenrod; */
+  /* background-color: goldenrod; */
+  border-color: goldenrod;
+  border-width: 1rpx;
+  border-style: solid;
+}
+.optimize-btn:active{
+  opacity: .7;
+}
+.match-info{
+  font-size: 24rpx;
+  color: #27263d;
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+  align-items: center;
+  height: 38rpx;
+}
+.close-btn{
+  position: relative;
+  z-index: 10;
+  color: #ffffff;
+  font-size: 32rpx;
+  margin-top: 30rpx;
+}
+.close-dialog:active{
+  opacity: .7;
+}
+
+.matchName{
+  background-color: #0bba70;
+  color: #ffffff;
+  height: 38rpx;
+  line-height: 38rpx;
+  text-align: left;
+  border-radius: 5rpx;
+  position:relative;
+  margin-left:10rpx;
+  margin-right:10rpx;
+  text-align: center;
+  padding:0 10rpx;
+  font-size:24rpx;
+  width: 190rpx;
+}
+.red{
+  color: red;
+  font-weight: 800;
+}
+.ballNum{
+  display: flex;
+  flex-direction: row;
+  padding-left: 10rpx;
+}
+.ball{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 88rpx;
+  height: 88rpx;
+  background-color: lightgrey;
+  border-radius: 10rpx;
+  margin-right:10rpx
+}
+.ball-type1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 88rpx;
+  height: 48rpx;
+  /* border-color: lightgrey;
+  border-style: dotted;
+  border-width: 1rpx; */
+  border-radius: 10rpx;
+  margin-right:10rpx;
+  margin-top:20rpx
+}
+.ball-active{
+  background-color: tomato;
+  color: #ffffff;
+}
+.ball-num{
+  font-size: 36rpx;
+  text-align: center;
+}
+.ball-num-type1{
+  display: flex;
+  flex-direction: row;
+  font-size: 36rpx;
+  text-align: center;
+  color: tomato;
+}
+.ball-odd{
+  font-size: 16rpx;
+  text-align: center;
+}
+.bid-comfirm{
+  width: 158rpx;
+  height: 84rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  line-height: 84rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: tomato;
+  box-shadow: 0rpx 0rpx 3rpx tomato;
+}
+.contentRight{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.picker{
+  height: 84rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.picker-inner{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 84rpx;
+  width: 400rpx;
+  margin-right: 20rpx;
+}
+.picker-title{
+  color: darkgray;
+  font-size: 28rpx;
+  margin-left: 5rpx;
+}
+.picker-val{
+  border-radius: 6rpx;
+  border-color: lightgray;
+  border-width: 1rpx;
+  border-style: dotted;
+  width: 120rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  font-size: 42rpx;
+  font-weight: 700;
+  color: tomato;
+  padding:0rpx 10rpx;
+  text-align: center;
+}
+.minFont{
+  font-size: 12rpx;
+}
+.strong1{
+  color: #27263d;
+  font-size:28rpx;
+}
+.bid-amount{
+  padding:0rpx 0 20rpx;
+  border-bottom-width: 1rpx;
+  border-bottom-color: lightgray;
+  border-bottom-style: dotted;
+}
+.ball-hidden{
+  opacity: 0;
+}
+.footer{
+  padding-top: 40rpx;
+}

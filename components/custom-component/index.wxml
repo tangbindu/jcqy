@@ -1,0 +1,4 @@
+<!-- 组件 custom-component.wxml -->
+<view>
+  <view>玉如有人疼</view>
+</view>

@@ -1,0 +1,48 @@
+<!-- 组件模板 -->
+<view class="bid-dialog" hidden="{{!showDialog}}">
+    <view class="dialog-mask" bindtap="closeDialog"/>
+    <view class="dialog-context">
+        <view class="dialog-header">
+            <view class="dialog-title">{{title}}</view>
+            <view class="match-info">
+                <view class="matchName">{{match.date}} {{match.id}}</view>
+                <view>{{match.teams[0]}} vs {{match.teams[1]}} [{{match.time}}]</view>
+            </view>
+        </view>
+        <view class="dialog-sub-title">
+            <view>请选</view>
+            <view class="strong1">4个</view>
+            <view>总进球投注</view>
+        </view>
+        <view class="ballNum">
+            <view class="ball {{customerBallNums[index]>0?'ball-active':''}}" wx:for="{{match.ballNum}}" wx:key="index" bindtap="chooseTotalBallNum" data-num="{{index}}">
+                <view class="ball-num">{{item}}</view>
+                <view class="ball-odd">{{match.odds[index]}}</view>
+            </view>
+        </view>
+        <view class="bid-amount" hidden="{{bid.customerBallNums.length==0}}">
+            <view class="ballNum">
+                <view class="ball-type1  {{customerBallNums[index]>0?'':'ball-hidden'}}" wx:for="{{customerBidAmount}}" wx:key="index">
+                    <view class="ball-num-type1">
+                        <view>{{item}}</view>
+                        <view class="minFont">注</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="optimize-btn-wrap" hidden="{{chooseTotalBallNumList.length<4}}">
+            <view class="optimize-btn" bindtap="cancelBidDialog">大数据优化投注分配[待实现]</view>
+        </view>
+        <view class="contentRight footer">
+            <picker class="picker" bindchange="bindPickerChange" value="{{amountListIndex}}" range="{{amountList}}">
+                <view class="picker-inner">
+                    <view class="picker-title">选择投注：</view>
+                    <view class="picker-val">{{amountList[amountListIndex]}}</view>
+                    <view class="picker-title"> 注</view>
+                </view>
+            </picker>
+            <view class="bid-comfirm" bindtap="comfirmBid" hidden="{{chooseTotalBallNumList.length<4}}">确定投注</view>
+        </view>
+    </view>
+    <view class="close-btn" bindtap="closeDialog">[关闭]</view>
+</view>

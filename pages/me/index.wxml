@@ -1,34 +1,28 @@
 <!--index.wxml-->
 <view class="container">
     <view class="table">
-        <view class="table-title-wrap">
-            <view class="table-title table-title-ing">
-                <view class="gap">1本轮</view>
-                <view class="gap">进行时</view>
-            </view>
-            <view class="table-title-corner table-title-corner-ing"></view>
-        </view>
         <view class="th">
-            <view class="thd" wx:for="{{tableData.th}}"> {{item}}</view>
+            <view class="thd matchid">编号</view>
+            <view class="thd ballNum">投注总球数</view>
+            <view class="thd">总进球</view>
+            <view class="thd">投入</view>
+            <view class="thd">盈亏</view>
         </view>
-        <view class="tb" wx:for="{{tableData.tb}}" wx:for-item="td">
-            <view class="td" wx:for="{{td}}" wx:for-item="item">{{item}}</view>
-        </view>
-    </view>
-
-    <view class="table">
-        <view class="table-title-wrap">
-            <view class="table-title table-title-disabled">
-                <view class="gap">2本轮</view>
-                <view class="gap">赚了[有吃肉]</view>
+        <view class="tb" wx:for="{{tableData.tb}}" wx:for-item="match">
+            <view class="fixInfo">{{match.matchInfo}}</view>
+            <view class="td matchid">{{match.matchid}}</view>
+            <view class="td ballNum">
+                <view class="ball" wx:for="{{match.customerBallNums}}"  wx:key="index" hidden="{{item==0}}">
+                    <view class="ball-num">{{index}}</view>
+                </view>
             </view>
-            <view class="table-title-corner table-title-corner-disabled"></view>
+            <view class="td">{{match.totalBallNum|| "等结果"}}</view>
+            <view class="td">{{match.totalAmount}}</view>
+            <view class="td"></view>
         </view>
-        <view class="th">
-            <view class="thd table-thd-disabled" wx:for="{{tableData.th}}"> {{item}}</view>
-        </view>
-        <view class="tb" wx:for="{{tableData.tb}}" wx:for-item="td">
-            <view class="td table-td-disabled" wx:for="{{td}}" wx:for-item="item">{{item}}</view>
+        <view class="th-end">
+            <view class="thd-end">总投入:</view>
+            <view class="thd-end">总盈亏:</view>
         </view>
     </view>
 </view>
